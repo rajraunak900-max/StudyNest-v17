@@ -2,6 +2,13 @@
 
 StudyNest is an offline-first Android app for tracking study sessions, library visits, tasks, breaks, and study history.
 
+## Features
+
+- Track study sessions manually or automatically when you arrive at or leave your library.
+- Organize study tasks, daily goals, breaks, and progress streaks.
+- Review daily, weekly, and monthly history with Actual Study, Sitting Time, distraction, and efficiency summaries.
+- Keep your study records on your device and use core features offline, with no account or app backend.
+
 ## Release
 
 - App version: `17` (`versionName`)
