@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.studynest.app.BackgroundEventsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-30T17:17:14" hostname="3f21b3d56cb7" time="6.289">
+  <properties/>
+  <testcase name="manualDeparturePausesButReturnDoesNotResumeManualTimer" classname="com.studynest.app.BackgroundEventsTest" time="5.558"/>
+  <testcase name="reconnectCancelsDepartureAndKeepsSingleSession" classname="com.studynest.app.BackgroundEventsTest" time="0.147"/>
+  <testcase name="locationPresenceKeepsTimerRunningAfterWifiExit" classname="com.studynest.app.BackgroundEventsTest" time="0.196"/>
+  <testcase name="notificationUsesOnlyCurrentSessionStudySegments" classname="com.studynest.app.BackgroundEventsTest" time="0.217"/>
+  <testcase name="departureRestoresSoundAndPausesAtExitWithoutActivity" classname="com.studynest.app.BackgroundEventsTest" time="0.171"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

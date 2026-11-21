@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.studynest.app.StudyMathTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-30T17:17:30" hostname="3f21b3d56cb7" time="0.004">
+  <properties/>
+  <testcase name="gapBreaksCurrentButPreservesLongest" classname="com.studynest.app.StudyMathTest" time="0.001"/>
+  <testcase name="emptyAndFutureDaysDontCount" classname="com.studynest.app.StudyMathTest" time="0.0"/>
+  <testcase name="handlesDaylightSaving" classname="com.studynest.app.StudyMathTest" time="0.001"/>
+  <testcase name="streakKeepsYesterdayUntilTodayQualifies" classname="com.studynest.app.StudyMathTest" time="0.0"/>
+  <testcase name="sumsSessionsAndExcludesBreaks" classname="com.studynest.app.StudyMathTest" time="0.001"/>
+  <testcase name="splitsMidnight" classname="com.studynest.app.StudyMathTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

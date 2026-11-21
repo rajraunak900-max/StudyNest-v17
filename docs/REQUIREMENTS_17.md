@@ -1,0 +1,9 @@
+# StudyNest 17 requirements
+
+Baseline is the completed signed StudyNest 1.6.12 project. Keep all 1.6.12 and earlier release artifacts unchanged. New release versionName is exactly `17`, with versionCode 23; keep application ID `com.studynest.app`, existing signing certificate, Room schema and user data compatible for in-place updates.
+
+Use one efficiency definition everywhere it is displayed: **Efficiency = Actual Study ÷ Sitting Time × 100**. Actual Study excludes classified distraction, pauses and unknown usage as defined by existing focus accounting. Sitting Time is the union of library presence and Manual timer intervals, includes distraction while the user remains seated, and counts overlapping minutes once. If required focus coverage is unknown or Sitting Time is zero, display efficiency as unavailable; cap display at 100%.
+
+Home must show today's live Sitting Time and Efficiency beside all-day Actual Study, and include Manual distraction in its day-level focus summary. History's selected-day summary must include distraction from Manual and library intervals and calculate efficiency using that selected day's Actual Study and union-based Sitting Time. Week & Month report must include Manual Actual Study, distraction and efficiency for both period choices. Apply the same formula and matching scope in library visit details, study-period details and Week & Month report wherever Efficiency is shown. Use the plain label `Efficiency`; remove library-only formula labels.
+
+Do not change existing Actual, Sitting, session qualification, Manual/Automatic transition, notification, background, sound, Wi-Fi departure grace, permissions, streak, goal or midnight behavior beyond the requested display/accounting correction. Do not change database schema or migrate/rewrite user data. Preserve all previous tests and add coverage for Manual study plus distraction at Home and in History, mixed Manual/library overlap, unknown coverage and zero Sitting Time.

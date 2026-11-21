@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.studynest.app.WifiScanTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-30T07:54:44" hostname="204a74682f10" time="0.004">
+  <properties/>
+  <testcase name="throttledScanShowsCachedResultsClearly" classname="com.studynest.app.WifiScanTest" time="0.003"/>
+  <testcase name="wifiOffAndLocationOffExplainFailure" classname="com.studynest.app.WifiScanTest" time="0.001"/>
+  <testcase name="freshResultsDeduplicateAndSelectExactName" classname="com.studynest.app.WifiScanTest" time="0.0"/>
+  <testcase name="deniedPermissionDoesNotRequestScan" classname="com.studynest.app.WifiScanTest" time="0.0"/>
+  <testcase name="emptyAndTimedOutScansHaveUsefulMessages" classname="com.studynest.app.WifiScanTest" time="0.0"/>
+  <testcase name="permissionRevokedDuringScanIsSafe" classname="com.studynest.app.WifiScanTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

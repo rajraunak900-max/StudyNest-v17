@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.studynest.app.AccessThemeTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-09-30T17:16:40" hostname="3f21b3d56cb7" time="33.51">
+  <properties/>
+  <testcase name="systemThemeReactsAndExplicitThemesOverrideSystem" classname="com.studynest.app.AccessThemeTest" time="32.969"/>
+  <testcase name="configuredAndAttentionButtonsBothNavigate" classname="com.studynest.app.AccessThemeTest" time="0.533"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

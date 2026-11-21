@@ -1,0 +1,416 @@
+{
+  "library_visits": [
+    {
+      "id": 1,
+      "start": 1790845892913,
+      "end": 1790846127035,
+      "checkpoint": 1790846217074,
+      "elapsedStart": 5120362503,
+      "boot": 115,
+      "minimumMinutes": null,
+      "qualified": null
+    },
+    {
+      "id": 2,
+      "start": 1790846373786,
+      "end": 1790848282345,
+      "checkpoint": 1790848548396,
+      "elapsedStart": 5120843375,
+      "boot": 115,
+      "minimumMinutes": null,
+      "qualified": null
+    },
+    {
+      "id": 3,
+      "start": 1790854110526,
+      "end": 1790854140152,
+      "checkpoint": 1790854140152,
+      "elapsedStart": 5128580115,
+      "boot": 115,
+      "minimumMinutes": null,
+      "qualified": null
+    },
+    {
+      "id": 4,
+      "start": 1790854154245,
+      "end": 1790860216896,
+      "checkpoint": 1790860216896,
+      "elapsedStart": 5128623834,
+      "boot": 115,
+      "minimumMinutes": null,
+      "qualified": null
+    },
+    {
+      "id": 5,
+      "start": 1790860228717,
+      "end": 1790866149027,
+      "checkpoint": 1790866149027,
+      "elapsedStart": 5134698306,
+      "boot": 115,
+      "minimumMinutes": null,
+      "qualified": null
+    },
+    {
+      "id": 6,
+      "start": 1790866154527,
+      "end": 1790868788760,
+      "checkpoint": 1790868878796,
+      "elapsedStart": 5140624116,
+      "boot": 115,
+      "minimumMinutes": null,
+      "qualified": null
+    },
+    {
+      "id": 7,
+      "start": 1790920672591,
+      "end": 1790930489710,
+      "checkpoint": 1790930489710,
+      "elapsedStart": 5195142180,
+      "boot": 115,
+      "minimumMinutes": null,
+      "qualified": null
+    },
+    {
+      "id": 8,
+      "start": 1790930507312,
+      "end": 1790934327560,
+      "checkpoint": 1790934417586,
+      "elapsedStart": 5204976901,
+      "boot": 115,
+      "minimumMinutes": null,
+      "qualified": null
+    },
+    {
+      "id": 9,
+      "start": 1790943183643,
+      "end": 1790954841537,
+      "checkpoint": 1790954930669,
+      "elapsedStart": 5217653232,
+      "boot": 115,
+      "minimumMinutes": null,
+      "qualified": null
+    },
+    {
+      "id": 10,
+      "start": 1790995076326,
+      "end": 1790995186840,
+      "checkpoint": 1790995276854,
+      "elapsedStart": 5269545024,
+      "boot": 115,
+      "minimumMinutes": null,
+      "qualified": null
+    },
+    {
+      "id": 11,
+      "start": 1791009376118,
+      "end": 1791021911656,
+      "checkpoint": 1791021911656,
+      "elapsedStart": 5283844816,
+      "boot": 115,
+      "minimumMinutes": null,
+      "qualified": null
+    },
+    {
+      "id": 12,
+      "start": 1791021927043,
+      "end": 1791022379199,
+      "checkpoint": 1791022469214,
+      "elapsedStart": 5296395741,
+      "boot": 115,
+      "minimumMinutes": 10,
+      "qualified": 0
+    },
+    {
+      "id": 13,
+      "start": 1791033898404,
+      "end": 1791040782624,
+      "checkpoint": 1791040872646,
+      "elapsedStart": 5308367103,
+      "boot": 115,
+      "minimumMinutes": 10,
+      "qualified": 1
+    }
+  ],
+  "sessions": [
+    {
+      "id": 1,
+      "startedAt": 1790684214346,
+      "endedAt": 1790685300584,
+      "trigger": "Wi-Fi",
+      "paused": 0,
+      "pausedByDeparture": 0,
+      "endedExplicitly": 0,
+      "measurementStart": null
+    },
+    {
+      "id": 2,
+      "startedAt": 1790685307707,
+      "endedAt": 1790685314084,
+      "trigger": "Manual",
+      "paused": 0,
+      "pausedByDeparture": 0,
+      "endedExplicitly": 0,
+      "measurementStart": null
+    },
+    {
+      "id": 3,
+      "startedAt": 1790685319965,
+      "endedAt": 1790686825149,
+      "trigger": "Manual",
+      "paused": 0,
+      "pausedByDeparture": 0,
+      "endedExplicitly": 0,
+      "measurementStart": null
+    },
+    {
+      "id": 4,
+      "startedAt": 1790687644984,
+      "endedAt": 1790697060407,
+      "trigger": "Wi-Fi",
+      "paused": 0,
+      "pausedByDeparture": 0,
+      "endedExplicitly": 0,
+      "measurementStart": null
+    },
+    {
+      "id": 5,
+      "startedAt": 1790747726925,
+      "endedAt": 1790783173074,
+      "trigger": "Wi-Fi",
+      "paused": 0,
+      "pausedByDeparture": 0,
+      "endedExplicitly": 0,
+      "measurementStart": null
+    },
+    {
+      "id": 6,
+      "startedAt": 1790823574824,
+      "endedAt": 1790908988022,
+      "trigger": "Wi-Fi",
+      "paused": 0,
+      "pausedByDeparture": 0,
+      "endedExplicitly": 1,
+      "measurementStart": 1790845892916
+    },
+    {
+      "id": 7,
+      "startedAt": 1790920672192,
+      "endedAt": 1790995186840,
+      "trigger": "Wi-Fi",
+      "paused": 0,
+      "pausedByDeparture": 0,
+      "endedExplicitly": 0,
+      "measurementStart": 1790920672192
+    },
+    {
+      "id": 8,
+      "startedAt": 1791009375799,
+      "endedAt": 1791040782624,
+      "trigger": "Wi-Fi",
+      "paused": 0,
+      "pausedByDeparture": 0,
+      "endedExplicitly": 0,
+      "measurementStart": 1791009375799
+    }
+  ],
+  "segments": [
+    {
+      "id": 1,
+      "sessionId": 1,
+      "start": 1790684214346,
+      "end": 1790684897735,
+      "checkpoint": 1790684875227,
+      "elapsedStart": 4958685676,
+      "boot": 115
+    },
+    {
+      "id": 2,
+      "sessionId": 1,
+      "start": 1790685053210,
+      "end": 1790685300583,
+      "checkpoint": 1790685296847,
+      "elapsedStart": 4959524540,
+      "boot": 115
+    },
+    {
+      "id": 3,
+      "sessionId": 2,
+      "start": 1790685307707,
+      "end": 1790685314084,
+      "checkpoint": 1790685307707,
+      "elapsedStart": 4959779037,
+      "boot": 115
+    },
+    {
+      "id": 4,
+      "sessionId": 3,
+      "start": 1790685319965,
+      "end": 1790685543909,
+      "checkpoint": 1790685537086,
+      "elapsedStart": 4959791295,
+      "boot": 115
+    },
+    {
+      "id": 5,
+      "sessionId": 4,
+      "start": 1790687645002,
+      "end": 1790692477012,
+      "checkpoint": 1790692454991,
+      "elapsedStart": 4962116332,
+      "boot": 115
+    },
+    {
+      "id": 6,
+      "sessionId": 4,
+      "start": 1790692479280,
+      "end": 1790697059521,
+      "checkpoint": 1790696690712,
+      "elapsedStart": 4966950609,
+      "boot": 115
+    },
+    {
+      "id": 7,
+      "sessionId": 5,
+      "start": 1790747726939,
+      "end": 1790752775181,
+      "checkpoint": 1790752852675,
+      "elapsedStart": 5022197382,
+      "boot": 115
+    },
+    {
+      "id": 8,
+      "sessionId": 5,
+      "start": 1790753027292,
+      "end": 1790761570333,
+      "checkpoint": 1790761600839,
+      "elapsedStart": 5027497735,
+      "boot": 115
+    },
+    {
+      "id": 9,
+      "sessionId": 5,
+      "start": 1790766389454,
+      "end": 1790768782532,
+      "checkpoint": 1790768869195,
+      "elapsedStart": 5040859897,
+      "boot": 115
+    },
+    {
+      "id": 10,
+      "sessionId": 5,
+      "start": 1790768911089,
+      "end": 1790782878055,
+      "checkpoint": 1790782938500,
+      "elapsedStart": 5043381532,
+      "boot": 115
+    },
+    {
+      "id": 11,
+      "sessionId": 6,
+      "start": 1790823574826,
+      "end": 1790823600448,
+      "checkpoint": 1790823687277,
+      "elapsedStart": 5098045269,
+      "boot": 115
+    },
+    {
+      "id": 12,
+      "sessionId": 6,
+      "start": 1790823934079,
+      "end": 1790823956280,
+      "checkpoint": 1790824041733,
+      "elapsedStart": 5098404522,
+      "boot": 115
+    },
+    {
+      "id": 13,
+      "sessionId": 6,
+      "start": 1790835242529,
+      "end": 1790839078922,
+      "checkpoint": 1790839154838,
+      "elapsedStart": 5109712118,
+      "boot": 115
+    },
+    {
+      "id": 14,
+      "sessionId": 6,
+      "start": 1790839182304,
+      "end": 1790846127035,
+      "checkpoint": 1790846194722,
+      "elapsedStart": 5113651893,
+      "boot": 115
+    },
+    {
+      "id": 15,
+      "sessionId": 6,
+      "start": 1790846373508,
+      "end": 1790848282345,
+      "checkpoint": 1790848282375,
+      "elapsedStart": 5120843097,
+      "boot": 115
+    },
+    {
+      "id": 16,
+      "sessionId": 6,
+      "start": 1790854110172,
+      "end": 1790868788760,
+      "checkpoint": 1790868868979,
+      "elapsedStart": 5128579761,
+      "boot": 115
+    },
+    {
+      "id": 17,
+      "sessionId": 7,
+      "start": 1790920672203,
+      "end": 1790934327560,
+      "checkpoint": 1790934396337,
+      "elapsedStart": 5195141792,
+      "boot": 115
+    },
+    {
+      "id": 18,
+      "sessionId": 7,
+      "start": 1790943183315,
+      "end": 1790954841537,
+      "checkpoint": 1790954927398,
+      "elapsedStart": 5217652904,
+      "boot": 115
+    },
+    {
+      "id": 19,
+      "sessionId": 7,
+      "start": 1790995076044,
+      "end": 1790995186840,
+      "checkpoint": 1790995247247,
+      "elapsedStart": 5269544742,
+      "boot": 115
+    },
+    {
+      "id": 20,
+      "sessionId": 8,
+      "start": 1791009375805,
+      "end": 1791022379199,
+      "checkpoint": 1791022468670,
+      "elapsedStart": 5283844503,
+      "boot": 115
+    },
+    {
+      "id": 21,
+      "sessionId": 8,
+      "start": 1791033897891,
+      "end": 1791034328236,
+      "checkpoint": 1791034308109,
+      "elapsedStart": 5308366589,
+      "boot": 115
+    },
+    {
+      "id": 22,
+      "sessionId": 8,
+      "start": 1791034348812,
+      "end": 1791040782624,
+      "checkpoint": 1791040849953,
+      "elapsedStart": 5308817510,
+      "boot": 115
+    }
+  ]
+}

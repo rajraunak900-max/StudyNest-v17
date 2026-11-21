@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.studynest.app.PickerIntegrationTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-09-30T07:54:40" hostname="204a74682f10" time="0.711">
+  <properties/>
+  <testcase name="adaptiveLauncherResourceRendersAttachedArtwork" classname="com.studynest.app.PickerIntegrationTest" time="0.27"/>
+  <testcase name="availableNetworkSelectionPersistsWithoutTyping" classname="com.studynest.app.PickerIntegrationTest" time="0.44"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Intent = Intent { act=android.location.MODE_CHANGED (has extras) }; Matching wrappers: []
+Intent = Intent { act=android.net.wifi.SCAN_RESULTS }; Matching wrappers: [Wrapper[receiver=[com.studynest.app.automation.WifiDiscovery$receiver$1@5f0a2c96], context=[android.app.ContextImpl@2946c837], intentFilter=[android.content.IntentFilter@1ef3250f]]]
+]]></system-err>
+</testsuite>

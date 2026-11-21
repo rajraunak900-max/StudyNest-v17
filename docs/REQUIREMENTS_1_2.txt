@@ -1,0 +1,875 @@
+STUDYNEST — FINAL UPDATE REQUIREMENTS
+
+Please modify my EXISTING Android application, StudyNest.
+
+This is an UPDATE to the existing application, not a new application.
+Do not rebuild the project from scratch unless technically unavoidable.
+Preserve the existing architecture, UI style, package/application ID,
+database, user data, and all features that are already working correctly.
+
+The new APK must install directly over my currently installed StudyNest APK
+as an UPDATE.
+
+==================================================
+A. CRITICAL UPDATE / DATA-SAFETY REQUIREMENTS
+==================================================
+
+DO NOT:
+- Change the package/application ID.
+- Clear application data during the update.
+- Destructively recreate the database.
+- Delete existing study history.
+- Delete study sessions.
+- Delete streak information.
+- Delete to-do tasks.
+- Delete daily goals.
+- Delete preferences/settings.
+- Delete the currently saved library Wi-Fi.
+- Break existing foreground/background functionality.
+
+If database/schema changes are required, use proper migrations.
+
+If the old version contains one saved Wi-Fi network, automatically migrate
+that Wi-Fi into the new multi-Wi-Fi system.
+
+The update must preserve existing user data.
+
+
+==================================================
+1. ADD A MASTER GEOFENCING ON/OFF CONTROL
+==================================================
+
+Add a dedicated setting that completely enables or disables geofencing.
+
+This must be a MASTER switch for ALL StudyNest functionality that uses
+geofencing.
+
+WHEN GEOFENCING IS ON:
+
+- Existing geofence functionality may operate normally.
+- Geofence ENTER/EXIT events may be used for existing location-based
+  functionality.
+- Geofencing may participate in timer/session automation where appropriate.
+
+WHEN GEOFENCING IS OFF:
+
+- Do not use geofence ENTER/EXIT events for automation.
+- Geofencing must NOT start a timer.
+- Geofencing must NOT stop a timer.
+- Geofencing must NOT pause a timer.
+- Geofencing must NOT resume a timer.
+- This applies to both manual and automatic timers.
+- Geofencing must NOT control vibration/sound mode.
+- Wi-Fi automation must continue operating independently.
+
+When geofencing is disabled, preferably unregister/remove active geofences
+instead of simply ignoring callbacks.
+
+Persist the selected setting after:
+- Closing StudyNest.
+- Reopening StudyNest.
+- Phone restart.
+
+IMPORTANT:
+
+Wi-Fi and geofencing must be independent.
+
+GEOFENCING OFF must NOT mean Wi-Fi automation OFF.
+
+
+==================================================
+2. MAKE WI-FI THE PRIMARY SOUND/VIBRATION TRIGGER
+==================================================
+
+Automatic vibration ON/OFF is one of the MAIN features of StudyNest and
+must be treated as a high-priority reliability feature.
+
+My home is approximately 200–300 metres from my library.
+
+Because of this, Android geofencing may sometimes still report that I am
+inside the library geofence even after I have physically left the library.
+
+Therefore:
+
+WI-FI MUST BE THE PRIMARY SIGNAL FOR SOUND/VIBRATION AUTOMATION.
+
+Geofencing should only be secondary/supporting information for sound
+automation.
+
+Basic behaviour:
+
+Connect to ANY saved library Wi-Fi
+→ VIBRATION MODE
+
+Disconnect from ALL saved library Wi-Fi
+→ Wait approximately 20–30 seconds
+→ Check again
+→ Still disconnected from every saved library Wi-Fi
+→ NORMAL SOUND MODE
+
+IMPORTANT:
+
+If:
+
+Wi-Fi = DISCONNECTED FROM ALL SAVED LIBRARY NETWORKS
+
+but:
+
+Geofence = STILL INSIDE
+
+StudyNest must NOT wait indefinitely for a Geofence EXIT event.
+
+After the Wi-Fi disconnection confirmation period, switch to NORMAL SOUND
+MODE regardless of the geofence still reporting INSIDE.
+
+Geofencing must NEVER veto a confirmed Wi-Fi departure.
+
+
+==================================================
+3. WI-FI DISCONNECTION CONFIRMATION / DELAY
+==================================================
+
+Do not immediately switch the phone to normal sound after a brief Wi-Fi
+drop.
+
+When an authorised library Wi-Fi disconnects:
+
+1. Wait approximately 20–30 seconds.
+
+2. During this period, check whether:
+   - The same library Wi-Fi reconnects, OR
+   - The phone connects to another saved StudyNest/library Wi-Fi.
+
+3. If an authorised Wi-Fi reconnects:
+   → Remain in library state.
+   → Keep VIBRATION MODE.
+
+4. If the phone remains disconnected from ALL authorised library Wi-Fi
+   networks after the confirmation period:
+   → Consider this a genuine Wi-Fi departure.
+   → Switch to NORMAL SOUND MODE.
+
+This prevents temporary Wi-Fi instability from repeatedly changing the
+phone between Sound and Vibration.
+
+
+==================================================
+4. ALWAYS USE NORMAL SOUND AFTER LEAVING LIBRARY
+==================================================
+
+Do NOT restore whatever sound mode existed before entering the library.
+
+Whenever StudyNest confirms that I have left/disconnected from the library,
+explicitly set the phone to NORMAL SOUND MODE.
+
+Examples:
+
+Before library = SILENT
+At library = VIBRATION
+Leave library = SOUND
+
+Before library = VIBRATION
+At library = VIBRATION
+Leave library = SOUND
+
+Before library = SOUND
+At library = VIBRATION
+Leave library = SOUND
+
+Therefore:
+
+LEAVE LIBRARY
+→ ALWAYS NORMAL SOUND MODE.
+
+Do not restore Silent or Vibration based on the previous sound state.
+
+
+==================================================
+5. SUPPORT AT LEAST FOUR LIBRARY WI-FI NETWORKS
+==================================================
+
+Currently StudyNest supports only one library Wi-Fi.
+
+Change this so that I can save AT LEAST FOUR Wi-Fi networks.
+
+Create a clean interface allowing me to:
+
+- Add Wi-Fi networks.
+- View saved Wi-Fi networks.
+- Remove a saved Wi-Fi.
+- Edit/replace a saved Wi-Fi where appropriate.
+- Store at least four Wi-Fi networks.
+
+Example:
+
+Library Wi-Fi 1
+Library Wi-Fi 2
+Library Wi-Fi 3
+Library Wi-Fi 4
+
+ANY saved Wi-Fi should count as an authorised StudyNest/library Wi-Fi.
+
+Connecting to ANY saved network:
+→ Enter library Wi-Fi state.
+→ Activate VIBRATION MODE according to the automation rules.
+
+IMPORTANT:
+
+If Library Wi-Fi #1 disconnects and the phone immediately connects to
+Library Wi-Fi #2, do NOT consider this leaving the library.
+
+Only trigger departure behaviour when the phone is disconnected from ALL
+saved StudyNest Wi-Fi networks for the confirmation period.
+
+MIGRATION:
+
+The Wi-Fi already stored by the previous version must automatically become
+the first saved Wi-Fi in the new multi-Wi-Fi system.
+
+Do not make the user configure it again.
+
+
+==================================================
+6. MANUAL SOUND OVERRIDE — ADD TWO SELECTABLE MODES
+==================================================
+
+Add a dedicated setting controlling what StudyNest should do if I manually
+change my phone from VIBRATION MODE to SOUND MODE while still connected to
+an authorised library Wi-Fi.
+
+Create a settings section such as:
+
+"Manual Sound Override"
+
+Provide TWO mutually exclusive options:
+
+○ Auto-restore vibration after 5 minutes
+○ Notify me once
+
+Only ONE option should be active at a time.
+
+Use radio buttons, single-selection cards, or another appropriate
+single-selection UI.
+
+Do NOT use two independent switches that could both be enabled
+simultaneously.
+
+Persist the selected option after:
+- Closing StudyNest.
+- Reopening StudyNest.
+- Phone restart.
+
+
+--------------------------------------------------
+OPTION 1 — AUTO-RESTORE VIBRATION AFTER 5 MINUTES
+--------------------------------------------------
+
+Behaviour:
+
+Library Wi-Fi connects
+→ StudyNest activates VIBRATION MODE.
+
+If I deliberately change:
+
+VIBRATION → SOUND
+
+while still connected to ANY authorised library Wi-Fi:
+
+1. Recognise this as a MANUAL USER OVERRIDE.
+
+2. Initially respect my Sound selection.
+
+3. Start a 5-minute timer.
+
+4. After 5 minutes check:
+
+   - Am I still connected to ANY authorised library Wi-Fi?
+   - Is the phone still in SOUND MODE?
+
+5. If BOTH are true:
+   → Automatically change the phone back to VIBRATION MODE.
+
+Example:
+
+Library Wi-Fi connected
+→ VIBRATION
+
+I manually select SOUND
+→ SOUND temporarily remains active
+
+5 minutes pass
+→ Still connected to library Wi-Fi
+→ Still Sound
+→ StudyNest automatically restores VIBRATION.
+
+If I manually restore VIBRATION before 5 minutes:
+→ Cancel the pending automatic restoration.
+
+If I leave/disconnect from ALL authorised library Wi-Fi before 5 minutes:
+→ Cancel the pending restoration.
+→ Follow normal library-exit behaviour.
+→ Ensure NORMAL SOUND MODE is enabled.
+
+
+--------------------------------------------------
+OPTION 2 — NOTIFY ME ONCE
+--------------------------------------------------
+
+If this option is selected:
+
+Library Wi-Fi connects
+→ StudyNest activates VIBRATION MODE.
+
+If I deliberately change:
+
+VIBRATION → SOUND
+
+while still connected to ANY authorised library Wi-Fi:
+
+1. Recognise this as a MANUAL USER OVERRIDE.
+
+2. Respect my manual choice.
+
+3. DO NOT automatically force Vibration back ON.
+
+4. Show ONE notification only.
+
+Suggested notification:
+
+"StudyNest: Your phone is still in sound mode."
+
+5. DO NOT repeat the notification after 5 minutes.
+
+6. DO NOT repeatedly remind me while the phone remains in Sound mode.
+
+7. Leave the phone in Sound mode until I manually change it or library-exit
+   logic applies.
+
+If I manually change:
+
+SOUND → VIBRATION
+
+and later:
+
+VIBRATION → SOUND
+
+again while still at the library:
+
+This is a NEW manual override event.
+
+StudyNest may show ONE new notification for that new event.
+
+When I disconnect from all authorised library Wi-Fi:
+→ Reset the manual-override notification state.
+→ Follow normal library-exit behaviour.
+→ Ensure NORMAL SOUND MODE is active.
+
+IMPORTANT:
+
+StudyNest must distinguish between:
+
+USER changes Sound/Vibration manually
+
+and
+
+STUDYNEST changes Sound/Vibration automatically.
+
+StudyNest's own automatic sound-mode changes must NOT trigger the manual
+override system.
+
+
+==================================================
+7. FIX PERMANENT NOTIFICATION BADGE ON APP ICON
+==================================================
+
+StudyNest currently causes an orange notification badge/count such as "1"
+to remain on the launcher app icon.
+
+This appears to be associated with StudyNest's foreground/background
+monitoring notification.
+
+Fix this.
+
+StudyNest may continue using Android-required foreground-service
+notifications for reliable background functionality.
+
+DO NOT remove required foreground services simply to hide the badge.
+
+Instead:
+
+- Configure the appropriate notification channel so service notifications
+  do not create launcher badges.
+- Use setShowBadge(false) or the appropriate Android implementation.
+- Properly cancel obsolete/stale notifications.
+- Prevent completed notifications from leaving a badge/count.
+- Apply this to relevant StudyNest notification channels.
+
+Expected result:
+
+Background service → WORKS
+Wi-Fi monitoring → WORKS
+Automatic vibration → WORKS
+Timers → WORK
+Required Android notification → WORKS
+Orange launcher "1" → DOES NOT APPEAR
+
+Manual Sound Override notifications must also NOT leave a permanent
+launcher badge.
+
+
+==================================================
+8. UPDATE THE NOTIFICATION BAR ICON
+==================================================
+
+StudyNest now has a NEW app icon.
+
+However, StudyNest's notification/status bar still shows the OLD icon.
+
+Replace the old notification branding.
+
+Update:
+- Foreground service notifications.
+- Timer notifications.
+- Sound-mode reminder notifications.
+- Other StudyNest notifications.
+
+Remove remaining references to the old notification icon.
+
+IMPORTANT:
+
+Follow Android's notification small-icon requirements.
+
+If Android requires a monochrome/silhouette icon for the status bar, create
+a proper notification-compatible monochrome version based on the NEW
+StudyNest icon.
+
+Do not simply force a full-colour launcher icon into the Android status bar
+if Android does not support it correctly.
+
+
+==================================================
+9. FIX LIGHT / DARK / SYSTEM THEME BEHAVIOUR
+==================================================
+
+Currently there is effectively no visible difference between Dark Mode and
+System Mode.
+
+Fix the theme system.
+
+LIGHT:
+Always use StudyNest's Light theme.
+
+DARK:
+Always use StudyNest's Dark theme regardless of Android's system theme.
+
+SYSTEM:
+Automatically follow Android's current system theme.
+
+Examples:
+
+Android = Light
+StudyNest = System
+→ StudyNest = Light
+
+Android = Dark
+StudyNest = System
+→ StudyNest = Dark
+
+If Android changes from Light → Dark while StudyNest is configured to
+System, StudyNest should follow the change appropriately.
+
+Persist the selected theme.
+
+
+==================================================
+10. FIX PERMISSION & SYSTEM ACCESS BUTTON NAVIGATION
+==================================================
+
+StudyNest has a Permission and System Access section.
+
+Previously, pressing a button opened its corresponding Android Settings
+screen where the required permission/access could be granted or denied.
+
+Currently:
+
+Before permission is granted:
+Button = GREEN
+Button works.
+
+After permission is granted:
+Button = GREY
+Button no longer navigates to its Android Settings page.
+
+Fix this.
+
+Colour may continue indicating status:
+
+GREEN
+→ Permission/system setting needs attention.
+
+GREY
+→ Permission/system setting is already configured.
+
+BUT:
+
+BOTH GREEN AND GREY BUTTONS MUST REMAIN CLICKABLE.
+
+Pressing the button must ALWAYS open its corresponding Android Settings
+screen regardless of whether access is already granted.
+
+This allows me to:
+- Review permission.
+- Grant permission.
+- Revoke permission.
+- Modify system access.
+
+Apply this to EVERY item in Permission and System Access.
+
+
+==================================================
+11. FIX DUPLICATE WI-FI / MANUAL LABELS IN HISTORY
+==================================================
+
+The History section currently displays session type twice.
+
+For example:
+
+Wi-Fi
+Wi-Fi
+
+or:
+
+Manual
+Manual
+
+This duplication is unnecessary.
+
+Display the session type ONLY ONCE.
+
+Example:
+
+Wi-Fi
+10:00 AM – 1:00 PM
+3h 00m
+
+OR:
+
+Manual
+4:00 PM – 6:00 PM
+2h 00m
+
+Do NOT remove the underlying session-type information from the database.
+
+Only fix the duplicated UI representation.
+
+
+==================================================
+12. ADD MORE MOTIVATIONAL QUOTES
+==================================================
+
+Significantly expand StudyNest's motivational quote collection.
+
+Include a good variety of short and meaningful quotes related to:
+
+- Studying
+- Discipline
+- Consistency
+- Focus
+- Hard work
+- Learning
+- Persistence
+- Goals
+- Self-improvement
+- Time management
+
+Avoid excessive repetition.
+
+Keep the existing quote UI/design unless changes are technically
+necessary.
+
+
+==================================================
+13. COLOUR-CODE TO-DO TASKS BY PRIORITY
+==================================================
+
+Make task priority visually identifiable.
+
+Use:
+
+HIGH PRIORITY
+→ RED
+
+MEDIUM PRIORITY
+→ YELLOW
+
+NORMAL PRIORITY
+→ GREEN
+
+Apply the colour cleanly.
+
+Prefer:
+- Priority badge
+- Side accent
+- Border
+- Small indicator
+
+rather than making the entire task card excessively bright.
+
+Make sure text remains readable in:
+- Light Mode.
+- Dark Mode.
+- System Mode.
+
+
+==================================================
+14. PRESERVE ALL EXISTING STUDYNEST FEATURES
+==================================================
+
+Do not remove or break existing features while implementing this update.
+
+Preserve at minimum:
+
+- Manual study timer.
+- Automatic study timer.
+- Wi-Fi automation.
+- Vibration/sound automation.
+- Geofencing.
+- Study history.
+- Study streak.
+- Daily study goals.
+- To-do list.
+- Motivational quotes.
+- Background monitoring.
+- Permission management.
+- Theme settings.
+- Existing preferences.
+- Existing local data.
+
+
+==================================================
+15. BACKGROUND OPERATION
+==================================================
+
+Automatic Wi-Fi and sound-mode functionality must work reliably in the
+background where Android permits it.
+
+StudyNest should NOT require its main UI to remain open for its intended
+automatic functionality.
+
+Use efficient Android mechanisms such as:
+- Network callbacks.
+- Geofencing.
+- Foreground services where Android requires them.
+- Appropriate background workers.
+
+Do NOT unnecessarily use continuous high-frequency GPS tracking.
+
+Geofencing should remain efficient and should be completely disabled when
+the user turns the new Geofencing master control OFF.
+
+
+==================================================
+16. FINAL AUTOMATION LOGIC
+==================================================
+
+The following behaviour should be treated as the expected reference logic.
+
+
+CASE A — ARRIVE AT LIBRARY
+
+Connect to ANY saved StudyNest/library Wi-Fi
+→ VIBRATION MODE.
+
+
+CASE B — TEMPORARY WI-FI DROP
+
+Library Wi-Fi disconnects
+→ Start approximately 20–30 second confirmation period.
+
+Wi-Fi reconnects during this period
+→ Cancel departure.
+→ Keep VIBRATION.
+
+
+CASE C — SWITCH BETWEEN SAVED LIBRARY WI-FI
+
+Wi-Fi #1 disconnects
+→ Phone connects to saved Wi-Fi #2
+→ Remain in library state
+→ Keep VIBRATION.
+
+
+CASE D — LEAVE LIBRARY
+
+Disconnected from ALL saved StudyNest Wi-Fi
+→ Wait approximately 20–30 seconds
+→ Still disconnected
+→ NORMAL SOUND MODE.
+
+
+CASE E — GEOFENCE STILL REPORTS INSIDE
+
+Wi-Fi = confirmed disconnected from ALL library networks
+Geofence = INSIDE
+
+→ NORMAL SOUND MODE.
+
+Do NOT wait for Geofence EXIT.
+
+
+CASE F — GEOFENCING DISABLED
+
+Geofencing = OFF
+Library Wi-Fi connects
+→ VIBRATION.
+
+Geofencing = OFF
+All library Wi-Fi disconnects for confirmation period
+→ NORMAL SOUND.
+
+
+CASE G — MANUAL SOUND OVERRIDE / OPTION 1
+
+Setting:
+AUTO-RESTORE VIBRATION AFTER 5 MINUTES
+
+Connected to library Wi-Fi
+→ VIBRATION.
+
+User manually selects SOUND
+→ Allow SOUND temporarily.
+
+After 5 minutes:
+Still connected + still Sound
+→ Automatically restore VIBRATION.
+
+
+CASE H — MANUAL SOUND OVERRIDE / OPTION 2
+
+Setting:
+NOTIFY ME ONCE
+
+Connected to library Wi-Fi
+→ VIBRATION.
+
+User manually selects SOUND
+→ Keep SOUND.
+→ Show ONE reminder notification.
+
+Do not repeat notification for the same manual override.
+
+
+CASE I — LEAVE WHILE MANUAL OVERRIDE ACTIVE
+
+Disconnected from all library Wi-Fi
+→ Wait confirmation period
+→ Still disconnected
+→ Cancel pending override/reminder state
+→ NORMAL SOUND MODE.
+
+
+==================================================
+17. REQUIRED TESTING
+==================================================
+
+Do not consider this update complete without testing the important
+combinations.
+
+TEST:
+
+1. Existing StudyNest APK → new APK update.
+2. Confirm existing data survives.
+3. Confirm existing saved Wi-Fi survives/migrates.
+4. Geofencing ON.
+5. Geofencing OFF.
+6. Geofencing OFF + Wi-Fi automation ON.
+7. Connect to each of four saved Wi-Fi networks.
+8. Switch directly between two saved Wi-Fi networks.
+9. Brief Wi-Fi disconnection followed by reconnection.
+10. Full Wi-Fi departure.
+11. Wi-Fi departure while geofence still reports INSIDE.
+12. Confirm Normal Sound after departure.
+13. Automatic Vibration on library Wi-Fi connection.
+14. Manual Sound Override Option 1.
+15. Verify automatic Vibration restoration after 5 minutes.
+16. Leave before Option 1's five-minute timer expires.
+17. Manual Sound Override Option 2.
+18. Verify only ONE notification appears.
+19. Verify no repeated notification for the same override.
+20. Switch back to Vibration and create a new manual Sound override.
+21. Verify a new one-time notification can appear.
+22. Confirm notification override state resets after leaving.
+23. Foreground/background operation.
+24. Remove StudyNest from Recent Apps and test permitted automation.
+25. Restart phone and test settings persistence.
+26. Verify Geofencing preference persists.
+27. Verify Manual Sound Override preference persists.
+28. Verify launcher orange "1" badge does not remain.
+29. Verify foreground service still works after badge fix.
+30. Verify NEW notification/status-bar icon.
+31. Light theme.
+32. Dark theme.
+33. System theme with Android Light.
+34. System theme with Android Dark.
+35. Change Android theme while StudyNest = System.
+36. Test every Permission/System Access button before granting access.
+37. Test the same buttons after they become grey/granted.
+38. Confirm grey buttons still navigate correctly.
+39. Confirm History shows Wi-Fi/Manual only once.
+40. Test High-priority To-Do = Red.
+41. Test Medium-priority To-Do = Yellow.
+42. Test Normal-priority To-Do = Green.
+43. Verify priority indicators in Light and Dark themes.
+44. Verify motivational quote expansion.
+45. Verify manual timer.
+46. Verify automatic timer.
+47. Verify timer behaviour with Geofencing ON.
+48. Verify timer behaviour with Geofencing OFF.
+49. Verify no existing StudyNest feature was unintentionally broken.
+
+
+==================================================
+FINAL PRIORITY ORDER
+==================================================
+
+Reliability of automatic Sound/Vibration behaviour is the HIGHEST priority.
+
+The intended core behaviour is:
+
+📶 Connect to ANY saved library Wi-Fi
+→ 📳 VIBRATION
+
+📶 Temporary disconnect
+→ ⏳ Wait 20–30 seconds
+
+📶 Reconnect
+→ 📳 Remain VIBRATION
+
+📶 Disconnect from ALL library Wi-Fi
+→ ⏳ Wait 20–30 seconds
+→ 🔊 NORMAL SOUND
+
+📍 Geofence incorrectly remains INSIDE
+→ Must NOT prevent Wi-Fi departure from restoring Sound.
+
+📍 Geofencing OFF
+→ Wi-Fi automation continues normally.
+
+MANUAL OVERRIDE OPTION 1:
+👤 User manually enables Sound
+→ Wait 5 minutes
+→ Still at library + still Sound
+→ 📳 Restore Vibration.
+
+MANUAL OVERRIDE OPTION 2:
+👤 User manually enables Sound
+→ 🔔 Notify ONCE
+→ 🔊 Respect Sound selection.
+→ No repeated reminders for the same override.
+
+The automatic vibration/sound system must be reliable even when the
+StudyNest UI is not actively open, subject to Android's platform
+restrictions.
+
+Please make targeted modifications to the existing StudyNest project rather
+than unnecessarily redesigning or rewriting the entire application.

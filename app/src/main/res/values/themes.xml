@@ -1,0 +1,1 @@
+<resources><style name="Theme.StudyNest" parent="android:style/Theme.Material.Light.NoActionBar"><item name="android:fontFamily">sans</item><item name="android:windowLightStatusBar">false</item><item name="android:statusBarColor">#163D36</item><item name="android:navigationBarColor">#163D36</item></style><color name="icon_background">#163D36</color></resources>

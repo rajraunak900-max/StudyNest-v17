@@ -1,0 +1,25 @@
+com.studynest.app.AccessThemeTest: 2 tests, 0 failures, 0 errors
+com.studynest.app.BackgroundEventsTest: 6 tests, 0 failures, 0 errors
+com.studynest.app.CompatibilityApi26Test: 6 tests, 0 failures, 0 errors
+com.studynest.app.CompatibilityApi27Test: 6 tests, 0 failures, 0 errors
+com.studynest.app.CompatibilityApi28Test: 6 tests, 0 failures, 0 errors
+com.studynest.app.CompatibilityApi29Test: 6 tests, 0 failures, 0 errors
+com.studynest.app.CompatibilityApi30Test: 6 tests, 0 failures, 0 errors
+com.studynest.app.CompatibilityApi31Test: 6 tests, 0 failures, 0 errors
+com.studynest.app.CompatibilityApi32Test: 6 tests, 0 failures, 0 errors
+com.studynest.app.CompatibilityApi33Test: 6 tests, 0 failures, 0 errors
+com.studynest.app.CompatibilityApi34Test: 6 tests, 0 failures, 0 errors
+com.studynest.app.CompatibilityApi35Test: 6 tests, 0 failures, 0 errors
+com.studynest.app.CompatibilityApi36Test: 6 tests, 0 failures, 0 errors
+com.studynest.app.LocalNavigationTest: 1 tests, 0 failures, 0 errors
+com.studynest.app.MainActivityStartupTest: 3 tests, 0 failures, 0 errors
+com.studynest.app.NotificationTest: 2 tests, 0 failures, 0 errors
+com.studynest.app.PickerIntegrationTest: 2 tests, 0 failures, 0 errors
+com.studynest.app.PreferencesTest: 1 tests, 0 failures, 0 errors
+com.studynest.app.SessionEngineTest: 29 tests, 0 failures, 0 errors
+com.studynest.app.SoundAutomationTest: 19 tests, 0 failures, 0 errors
+com.studynest.app.StudyMathTest: 6 tests, 0 failures, 0 errors
+com.studynest.app.StudyPeriodsTest: 6 tests, 0 failures, 0 errors
+com.studynest.app.WifiPresenceTest: 2 tests, 0 failures, 0 errors
+com.studynest.app.WifiScanTest: 6 tests, 0 failures, 0 errors
+TOTAL 151; failures/errors 0

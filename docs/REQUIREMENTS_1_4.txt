@@ -1,0 +1,1044 @@
+STUDYNEST – FINAL UI POLISH + APP ICON FIX
+
+Continue working on my EXISTING StudyNest Android project.
+
+This is an UPDATE to the finished application. DO NOT rebuild the project from
+scratch.
+
+The app's major functionality is already working, so make only the changes
+described below and avoid unnecessary modifications to unrelated screens,
+database logic, study tracking, history, tasks, or automation.
+
+==================================================
+A. CRITICAL – CONTINUOUS SAVE / CHECKPOINT REQUIREMENT
+==================================================
+
+This requirement is extremely important.
+
+My ChatGPT Work usage/session limit can expire or reset unexpectedly.
+
+DO NOT wait until this entire update is finished before saving your work.
+
+After EVERY meaningful and stable step:
+
+1. Save all modified source files immediately.
+
+2. Make sure completed changes are actually written into the project and are
+   not left only as temporary/unsaved edits.
+
+3. Keep the project compilable and recoverable whenever reasonably possible.
+
+4. Continuously update:
+
+   STUDYNEST_PROGRESS.md
+
+5. Record:
+   - Feature/change completed.
+   - Files modified.
+   - Bugs fixed.
+   - Current work in progress.
+   - Remaining requirements.
+   - Build/test status.
+   - Any known issue.
+
+6. After every major completed feature, run an appropriate build/check if
+   practical.
+
+7. If the build succeeds, record that success in STUDYNEST_PROGRESS.md.
+
+8. If something is only partially implemented, clearly mark it as PARTIAL.
+
+9. Never mark a feature COMPLETE until its implementation has actually been
+   saved and reasonably verified.
+
+10. If the Work session ends because of usage limits, the next session must be
+    able to inspect STUDYNEST_PROGRESS.md and continue from the exact latest
+    stable point.
+
+IMPORTANT:
+I would rather have 50–60% of this update safely saved than lose completed work
+because everything was kept until the end.
+
+==================================================
+B. FIX STUDYNEST LAUNCHER ICON
+==================================================
+
+The current StudyNest launcher icon does not visually match other Android/
+Samsung application icons.
+
+On my Samsung home screen, the StudyNest icon looks like a smaller rounded
+square sitting inside the launcher icon area.
+
+Other applications fill the Samsung adaptive-icon mask correctly.
+
+The artwork itself is correct.
+
+DO NOT redesign the StudyNest logo.
+
+The StudyNest logo is:
+
+- open book
+- clock
+- dark/navy background
+- red/orange lighting on the left
+- blue lighting on the right
+
+The problem is its Android launcher/adaptive-icon implementation.
+
+--------------------------------------------------
+B1. IMPLEMENT A PROPER ANDROID ADAPTIVE ICON
+--------------------------------------------------
+
+Do NOT simply place the entire existing square PNG inside another Android
+launcher icon.
+
+Create a proper Android Adaptive Icon structure.
+
+Use separate:
+
+1. BACKGROUND layer
+2. FOREGROUND layer
+
+The foreground should contain the important StudyNest artwork, particularly:
+
+- clock
+- open book
+- relevant lighting/glow
+
+The background should provide the appropriate dark/navy background.
+
+Remove unnecessary outer padding from the foreground artwork.
+
+The existing image should NOT contain a baked-in small rounded-square icon that
+then gets masked again by Samsung.
+
+Android/Samsung should be responsible for applying the final launcher mask.
+
+--------------------------------------------------
+B2. CORRECT ICON SCALE
+--------------------------------------------------
+
+Scale the foreground correctly according to Android adaptive-icon safe-zone
+requirements.
+
+The StudyNest icon should visually occupy approximately the same launcher area
+as normal apps such as Telegram, Calculator, Dictionary, etc.
+
+Do NOT simply enlarge the image until it happens to look correct on one Samsung
+device.
+
+It must remain compatible with different Android launcher masks.
+
+Test/consider:
+
+- Samsung squircle
+- circular masks
+- rounded-square masks
+- standard Android adaptive icon behaviour
+
+Important elements such as the book and clock must not be clipped.
+
+--------------------------------------------------
+B3. ANDROID RESOURCES
+--------------------------------------------------
+
+Correctly configure all necessary launcher resources, including where
+appropriate:
+
+mipmap-anydpi-v26/ic_launcher.xml
+mipmap-anydpi-v26/ic_launcher_round.xml
+
+and the appropriate:
+
+- foreground resources
+- background resources
+- legacy launcher resources
+
+Verify AndroidManifest.xml correctly references:
+
+android:icon
+android:roundIcon
+
+Also ensure the icon works correctly on Android versions that do not use
+adaptive icons.
+
+If Android 13+ themed/monochrome launcher icon support already exists or can be
+added safely, configure an appropriate monochrome version WITHOUT compromising
+the normal full-colour StudyNest icon.
+
+--------------------------------------------------
+B4. VERIFY THE ICON
+--------------------------------------------------
+
+After implementation:
+
+1. Build the application.
+2. Verify that the launcher icon resources resolve correctly.
+3. Make sure there is no unnecessary double padding.
+4. Make sure the icon does not appear as a tiny icon inside another icon.
+5. Make sure important artwork is not clipped.
+
+Remember that Android launchers can cache icons.
+
+If necessary during testing, uninstall the previous StudyNest build and install
+the new build before concluding that the icon implementation failed.
+
+CHECKPOINT HERE.
+
+After the icon correction is stable:
+
+- SAVE everything.
+- Build the project.
+- Update STUDYNEST_PROGRESS.md.
+- Mark APP ICON FIX complete only if successfully implemented.
+
+==================================================
+C. PROFESSIONAL REDESIGN OF SETTINGS
+==================================================
+
+Redesign the existing Settings screen to look like a polished modern Android
+application.
+
+IMPORTANT:
+
+This is primarily a UI/UX restructuring.
+
+DO NOT remove working settings.
+DO NOT change their underlying behaviour unless required for the new UI.
+DO NOT reset existing user preferences.
+
+StudyNest already uses Jetpack Compose / Material 3, so use Material 3 design
+principles consistently.
+
+The objective is:
+
+CLEAN
+MODERN
+PROFESSIONAL
+SIMPLE
+EASY TO UNDERSTAND
+
+Avoid making the Settings screen unnecessarily complicated.
+
+==================================================
+D. SETTINGS – VISUAL HIERARCHY
+==================================================
+
+Instead of displaying many unrelated controls together, organise Settings into
+clear sections.
+
+Suggested structure:
+
+SETTINGS
+
+[Automation Status Card]
+
+LIBRARY AUTOMATION
+- Library Wi-Fi
+- Library Location / GPS
+
+SOUND & VIBRATION
+- Automatic vibration
+- Manual Sound Override
+
+STUDY TRACKING
+- Automatic study tracking
+- Break-related configuration, if applicable
+
+NOTIFICATIONS
+- Relevant notification settings already supported by StudyNest
+
+APP
+- Appearance, if currently supported
+- About StudyNest
+- Version
+
+Only include settings/features that actually exist in StudyNest.
+
+Do NOT invent non-functional settings simply to fill the screen.
+
+==================================================
+E. AUTOMATION STATUS CARD
+==================================================
+
+At the top of Settings, create a compact professional status card.
+
+Example concept:
+
+┌──────────────────────────────────────┐
+│       StudyNest Automation           │
+│                                      │
+│             ● Active                 │
+│                                      │
+│ Library Wi-Fi      Configured        │
+│ Sound automation   Ready             │
+│ Study tracking     Enabled           │
+└──────────────────────────────────────┘
+
+This is only a design example.
+
+Adapt it to the existing StudyNest visual language.
+
+The status information must reflect REAL app state.
+
+Do NOT display fake "Active", "Ready", "Connected", etc. statuses.
+
+For example:
+
+Library Wi-Fi:
+- Configured
+- Not configured
+
+Location:
+- Configured
+- Permission required
+- Disabled
+
+Sound automation:
+- Ready
+- Permission required
+- Disabled
+
+Study tracking:
+- Enabled
+- Disabled
+
+The user should be able to open Settings and immediately understand whether
+StudyNest's important automation features are properly configured.
+
+==================================================
+F. USE PROFESSIONAL SETTING ROWS
+==================================================
+
+Use consistent Material 3 setting rows.
+
+Each setting should normally contain:
+
+[ICON]  Setting title                 [CONTROL/›]
+        Short secondary description
+
+For example:
+
+📶 Library Wi-Fi                         ›
+   Library_WiFi
+
+📳 Automatic vibration                  ON
+   Vibrate automatically at the library
+
+🔊 Manual Sound Override                 ›
+   Auto restore after 5 minutes
+
+Avoid huge cards for every individual setting.
+
+Related settings can share a single grouped surface/card.
+
+Use consistent:
+
+- spacing
+- padding
+- typography
+- icon size
+- corner radius
+- switch style
+- divider behaviour
+- secondary text colour
+
+The Settings page should look intentionally designed rather than like individual
+features were added one after another.
+
+==================================================
+G. PROGRESSIVE DISCLOSURE
+==================================================
+
+Do not show every advanced option directly on the main Settings screen.
+
+The main screen should provide a clean summary.
+
+Example:
+
+Library Wi-Fi
+Library_WiFi                                >
+
+When tapped, open the existing Wi-Fi configuration UI or a dedicated
+configuration screen.
+
+Similarly:
+
+Manual Sound Override
+Auto restore after 5 minutes               >
+
+Tapping it can open the detailed options.
+
+This principle should be used wherever it makes the Settings page cleaner.
+
+However:
+
+DO NOT create unnecessary screens for simple ON/OFF switches.
+
+Simple binary settings should continue using Material 3 switches directly.
+
+==================================================
+H. LIBRARY AUTOMATION SECTION
+==================================================
+
+Create a clean "Library Automation" section.
+
+Include the existing:
+
+- Wi-Fi based library detection/configuration
+- GPS/location configuration if currently implemented
+
+Example:
+
+LIBRARY AUTOMATION
+
+📶 Library Wi-Fi                           >
+   MyLibraryWiFi
+
+📍 Library Location                        >
+   Location configured
+
+If something is not configured, clearly display:
+
+Not configured
+
+rather than leaving it blank.
+
+==================================================
+I. SOUND & VIBRATION SECTION
+==================================================
+
+Create a dedicated:
+
+SOUND & VIBRATION
+
+section.
+
+Include the existing working sound automation features.
+
+For example:
+
+📳 Automatic vibration                 [ON]
+   Vibrate while at the library
+
+🔊 Manual Sound Override                  >
+   Auto restore after 5 minutes
+
+For Manual Sound Override, show the currently selected behaviour as secondary
+text.
+
+For example:
+
+Auto restore after 5 minutes
+
+OR
+
+Remind me once
+
+depending on the user's selection.
+
+Do NOT change the previously implemented behaviour:
+
+AUTO OVERRIDE:
+If the user manually enables sound while still inside the library, automatically
+return to vibration after approximately 5 minutes.
+
+REMINDER ONLY:
+If the user manually enables sound while inside the library, send ONE reminder.
+Do NOT repeatedly remind every five minutes.
+
+==================================================
+J. PERMISSION WARNINGS
+==================================================
+
+Make permission problems easier to understand.
+
+Do NOT permanently display large technical permission explanations on the main
+Settings screen.
+
+Instead, use concise contextual states such as:
+
+⚠ Permission required
+
+or:
+
+Location
+Permission required                       >
+
+When tapped, explain what permission is required and provide the appropriate
+action.
+
+Possible states should be derived from the actual Android permission state.
+
+Never pretend that a feature is working if its required permission has not
+been granted.
+
+==================================================
+K. WI-FI CONFIGURATION
+==================================================
+
+Preserve the existing available-Wi-Fi selection feature.
+
+The user should continue to be able to select a detected Wi-Fi network instead
+of manually entering its SSID.
+
+On the main Settings page simply show:
+
+Library Wi-Fi
+Library_WiFi                               >
+
+Then keep network scanning/selection inside its configuration UI.
+
+Do not clutter the main Settings screen with the entire Wi-Fi network list.
+
+==================================================
+L. STUDY TRACKING SECTION
+==================================================
+
+Create a clean Study Tracking section for relevant existing options.
+
+For example:
+
+STUDY TRACKING
+
+⏱ Automatic Study Tracking             [ON]
+   Track study sessions automatically
+
+☕ Break settings                          >
+   Current configured behaviour
+
+Only include controls actually supported by the application.
+
+Do NOT modify the new History/session grouping behaviour while redesigning
+Settings.
+
+==================================================
+M. NOTIFICATIONS
+==================================================
+
+Group existing notification-related controls under:
+
+NOTIFICATIONS
+
+Use standard Material 3 switches where appropriate.
+
+Keep descriptions short.
+
+Example:
+
+🔔 Sound Override Reminder             [ON]
+   Warn when sound is enabled in the library
+
+Again, only expose settings that genuinely exist.
+
+==================================================
+N. ABOUT STUDYNEST
+==================================================
+
+At the bottom, add a simple professional About section/page if one does not
+already exist.
+
+It can contain:
+
+StudyNest
+
+Current StudyNest icon
+
+Version number obtained from the actual application/build configuration
+
+A short description such as:
+
+"Study smarter. Stay focused."
+
+Do NOT hard-code an incorrect version number.
+
+Keep this section minimal.
+
+==================================================
+O. VISUAL STYLE
+==================================================
+
+Keep StudyNest's existing overall design language.
+
+Do NOT suddenly redesign Settings to look completely different from Home,
+Tasks and History.
+
+Use Material 3.
+
+Prefer:
+
+- clean surfaces
+- sensible whitespace
+- rounded grouped containers
+- clear hierarchy
+- subtle section labels
+- consistent typography
+- restrained colour usage
+
+The new StudyNest icon uses:
+
+- dark/navy
+- red/orange
+- blue
+
+These colours may inspire SMALL accents where appropriate, but do NOT turn the
+Settings page into a red/blue gradient interface.
+
+The application's existing theme should remain dominant.
+
+Support the application's existing light/dark theme behaviour if already
+implemented.
+
+==================================================
+P. SMALL UX DETAILS
+==================================================
+
+Make the whole setting row tappable when it navigates to another configuration
+screen.
+
+Use proper touch targets.
+
+Use Material icons consistently.
+
+Do not use random emoji as production icons.
+
+Use chevrons/arrows consistently for navigation rows.
+
+Switches should represent immediate ON/OFF settings.
+
+Navigation arrows should represent settings that open another screen/dialog.
+
+Secondary text should show useful current state.
+
+Examples:
+
+Library Wi-Fi
+StudyLibrary_5G
+
+Manual Sound Override
+Auto restore after 5 minutes
+
+Location
+Configured
+
+This allows the user to understand current configuration without opening every
+setting.
+
+==================================================
+Q. DO NOT BREAK EXISTING FEATURES
+==================================================
+
+This is extremely important.
+
+The app is already substantially finished.
+
+Preserve all existing functionality, including:
+
+- Wi-Fi library detection
+- available Wi-Fi selection
+- GPS/location detection
+- vibration/sound automation
+- Manual Sound Override
+- automatic study tracking
+- manual study tracking
+- study sessions
+- session grouping
+- session details
+- break handling
+- streak tracking
+- Tasks / To-Do
+- motivational quotes
+- History/calendar
+- notifications
+- saved settings
+- existing user data
+
+Do NOT modify database structures unless genuinely necessary.
+
+A Settings UI redesign should preferably reuse the existing ViewModels,
+repositories, DataStore/preferences, state and business logic.
+
+Do NOT rewrite working backend logic simply because the UI is being redesigned.
+
+==================================================
+R. TEST SETTINGS AFTER REDESIGN
+==================================================
+
+After implementation verify:
+
+1. Settings opens normally.
+2. No crashes occur.
+3. Existing preferences remain preserved.
+4. Switches reflect their REAL stored values.
+5. Changing a switch updates the underlying feature.
+6. Library Wi-Fi displays the selected SSID.
+7. Wi-Fi configuration still works.
+8. Location configuration still works.
+9. Manual Sound Override still works.
+10. Correct Manual Sound Override mode is displayed.
+11. Permission warnings reflect actual permission state.
+12. Navigation rows open the correct configuration UI.
+13. Automation Status Card reflects actual state.
+14. Back navigation works correctly.
+15. Settings visually matches the rest of StudyNest.
+16. Light/dark theme behaviour remains correct if supported.
+17. No unrelated feature was broken.
+
+==================================================
+S. CRITICAL BACKGROUND AUTOMATION BUG FIXES
+==================================================
+
+These bugs must be fixed without requiring the user to manually open StudyNest.
+
+The current behaviour indicates that some automation/state checks are happening
+only when the app becomes active. That is not acceptable for library automation.
+
+StudyNest's automatic features must continue to react appropriately while the app
+is closed/backgrounded and, where Android permits, while the phone is locked.
+
+Do NOT solve these bugs by aggressive high-frequency polling that causes
+unnecessary battery drain. Use the most appropriate Android background/event
+mechanisms for the project's current architecture and supported Android versions.
+
+--------------------------------------------------
+S1. BUG FIX – AUTO STUDY TIMER MUST STOP IN BACKGROUND
+--------------------------------------------------
+
+CURRENT BUG:
+
+The automatic study timer can remain running after I leave the library.
+
+At present, it appears to stop only after I manually open StudyNest again.
+
+REQUIRED BEHAVIOUR:
+
+When automatic study tracking is using the configured library Wi-Fi as its
+presence signal, the active automatic study session must stop automatically when
+the phone is no longer connected to that configured library Wi-Fi.
+
+This must include the case where:
+
+- Wi-Fi is manually turned OFF.
+- The configured library Wi-Fi disconnects.
+- The phone moves out of range and loses the configured library Wi-Fi connection.
+
+The user must NOT need to reopen StudyNest to trigger the stop.
+
+The session end time must reflect the actual detected disconnection/exit event as
+accurately as Android allows, rather than the later time when the app is opened.
+
+IMPORTANT:
+
+- Do not stop manually started study sessions unless the existing app logic says
+  they should be controlled by library automation.
+- Do not corrupt session history or create duplicate session-end events.
+- Avoid creating multiple overlapping sessions from repeated connectivity events.
+- Preserve the existing break/session grouping behaviour.
+- If both Wi-Fi and GPS/library-location detection are supported, preserve the
+  user's configured detection logic instead of blindly changing all modes.
+- Handle rapid Wi-Fi reconnects safely according to the app's existing automation
+  rules so that temporary network state changes do not corrupt session data.
+- The fix must work when StudyNest is backgrounded and should not depend on opening
+  the Home screen, Settings screen, or any other activity.
+
+Use Android-supported background/event handling appropriate to the existing
+project and target SDK. Do not add a battery-heavy permanent polling loop unless
+there is genuinely no better supported mechanism.
+
+--------------------------------------------------
+S2. BUG FIX – AUTO VIBRATION MUST WORK WHILE PHONE IS LOCKED
+--------------------------------------------------
+
+CURRENT BUG:
+
+Automatic vibration works after entering the library only when I open StudyNest.
+
+REQUIRED BEHAVIOUR:
+
+When StudyNest detects that I have entered the configured library condition
+(for example, connection to the configured library Wi-Fi and/or the configured
+location according to the user's existing setup), it must apply the existing
+automatic vibration behaviour without requiring me to open the app.
+
+This should work when:
+
+- StudyNest is in the background.
+- StudyNest is not currently visible.
+- The phone screen is off/locked, subject to Android's supported background and
+  permission rules.
+
+If the required Android permission, notification-policy access, location
+permission, background-location capability, or other system access is missing,
+do NOT silently pretend that vibration automation is active.
+
+Instead:
+
+- Preserve the existing permission-warning approach.
+- Show the real state in Settings.
+- Provide the appropriate user action to grant/enable the required access.
+
+Do not bypass Android security restrictions.
+
+Also preserve the existing exit behaviour: when the user leaves the library,
+StudyNest should restore the previously intended sound behaviour according to the
+already implemented automation rules.
+
+The fix must not interfere with:
+
+- Manual Sound Override.
+- Auto restore after approximately 5 minutes.
+- Reminder-only mode.
+- Existing sound/vibration preferences.
+- User-selected automation settings.
+
+--------------------------------------------------
+S3. BACKGROUND RELIABILITY + BATTERY REQUIREMENT
+--------------------------------------------------
+
+Because these two fixes require background operation, implement them in a
+battery-conscious way.
+
+Prefer event-driven Android mechanisms and the project's existing architecture.
+
+Avoid:
+
+- Constant GPS polling.
+- Very short periodic background jobs.
+- Unnecessary always-running loops.
+- Repeated wake-ups when nothing has changed.
+
+If a foreground service is genuinely required for reliable active-session
+tracking on the supported Android versions, implement it correctly with the
+appropriate notification/channel and lifecycle handling.
+
+If the existing project already has a suitable service, receiver, WorkManager
+task, or automation component, extend/reuse it rather than creating duplicate
+background systems.
+
+After implementation, verify behaviour with:
+
+1. App open.
+2. App backgrounded.
+3. Phone locked/screen off.
+4. Library Wi-Fi connected.
+5. Library Wi-Fi disconnected.
+6. Wi-Fi manually disabled.
+7. Wi-Fi re-enabled/reconnected.
+8. App reopened after the event.
+
+The final state and session history must remain consistent in all cases.
+
+CHECKPOINT HERE.
+
+After these background automation fixes are stable:
+
+- SAVE all modified files.
+- Run an appropriate build/check.
+- Update STUDYNEST_PROGRESS.md.
+- Record both bug fixes separately.
+- Mark them COMPLETE only after they are actually implemented and reasonably
+  verified.
+
+==================================================
+T. UPDATE – LIVE CURRENT SESSION IN NOTIFICATION PANEL
+==================================================
+
+Improve StudyNest's ongoing notification so that the Android notification panel
+shows the CURRENT ACTIVE STUDY SESSION and its timing.
+
+When a study session is active, the StudyNest notification should clearly show
+useful live information such as:
+
+StudyNest
+Current session • 01:42:18
+
+The exact visual wording can be adapted to Android notification conventions and
+the existing StudyNest design, but the notification must communicate:
+
+- That a study session is currently active.
+- The timing/duration of the current session.
+
+The displayed timing must correspond to the actual current active session and
+must not show stale data from a previous session.
+
+REQUIRED BEHAVIOUR:
+
+1. When a session starts, create/update the appropriate StudyNest notification.
+2. While the session is active, show its current elapsed timing using an
+   efficient Android-supported approach.
+3. When the session pauses/stops/ends according to existing StudyNest behaviour,
+   update or remove the active-session notification appropriately.
+4. If the session state changes while the app is backgrounded, the notification
+   must remain consistent with the real session state.
+5. Reopening the app must not create duplicate ongoing notifications.
+6. Device restart/app process recreation should not cause a fake session to be
+   displayed. Restore only real persisted active-session state supported by the
+   existing app logic.
+7. Respect Android notification permission requirements.
+8. Keep the notification clean and readable; do not overload it with unnecessary
+   controls or text.
+
+If Android's built-in chronometer functionality is suitable, prefer an efficient
+system-supported timer display rather than manually waking the app every second.
+
+Do NOT introduce per-second background work solely to redraw notification text if
+Android can display the running duration efficiently itself.
+
+If both automatic and manual study sessions exist, the notification should
+reflect whichever real session is currently active according to StudyNest's
+existing session model.
+
+Do not change the underlying session database structure unless genuinely
+necessary.
+
+CHECKPOINT HERE.
+
+After the current-session notification is stable:
+
+- SAVE all modified files.
+- Build/check the project.
+- Update STUDYNEST_PROGRESS.md.
+- Record the notification update and relevant files modified.
+- Mark it COMPLETE only after it has been reasonably verified.
+
+==================================================
+U. REGRESSION TESTS FOR NEW BUG FIXES AND NOTIFICATION
+==================================================
+
+In addition to all previous Settings/icon tests, verify:
+
+1. Start an automatic study session by entering/connecting to the configured
+   library condition.
+2. Background StudyNest.
+3. Turn the screen off/lock the phone.
+4. Confirm automatic vibration is applied without opening StudyNest.
+5. Confirm the active-session notification appears.
+6. Confirm the notification displays the current session timing.
+7. Leave/disconnect from the configured library Wi-Fi.
+8. Confirm the automatic timer stops without opening StudyNest.
+9. Repeat by manually turning Wi-Fi OFF.
+10. Confirm the timer stops without opening StudyNest.
+11. Reopen StudyNest and confirm History/session timing matches the background
+    event rather than the later app-open time.
+12. Confirm no duplicate study sessions were created.
+13. Confirm no duplicate notifications were created.
+14. Reconnect to the library Wi-Fi and confirm automation can start correctly
+    again according to existing rules.
+15. Confirm Manual Sound Override still works.
+16. Confirm Reminder Only still sends only ONE reminder, not one every five
+    minutes.
+17. Confirm Auto Override still restores vibration after approximately five
+    minutes when that mode is selected.
+18. Confirm manual study sessions are not incorrectly stopped by Wi-Fi events if
+    existing StudyNest behaviour treats them independently.
+19. Confirm notification permission denial is handled gracefully.
+20. Confirm missing sound/location/system permissions are represented accurately
+    in Settings.
+21. Check that the new background implementation does not cause obviously
+    excessive battery usage or repeated unnecessary wake-ups.
+22. Confirm existing Tasks, History, streaks, quotes, Settings, saved preferences,
+    session grouping, and other unrelated functionality still work.
+
+==================================================
+V. FINAL QUALITY CHECK – ALL TASKS
+==================================================
+
+After ALL requested work is finished, the update now contains FIVE major areas:
+
+TASK 1:
+Adaptive launcher icon correction.
+
+TASK 2:
+Professional Settings redesign.
+
+TASK 3:
+Fix automatic study timer so configured library Wi-Fi disconnection/Wi-Fi OFF can
+end the automatic session in the background without opening StudyNest.
+
+TASK 4:
+Fix automatic vibration so it can react to the configured library condition while
+StudyNest is backgrounded and the phone is locked, subject to Android permissions
+and platform restrictions.
+
+TASK 5:
+Show the current active study session and its timing in the Android notification
+panel.
+
+Perform a final project build.
+
+Fix compilation/runtime issues introduced by these changes.
+
+Do NOT unnecessarily refactor unrelated working code.
+
+Then update STUDYNEST_PROGRESS.md with statuses for:
+
+APP ICON FIX
+SETTINGS REDESIGN
+BACKGROUND AUTO-TIMER FIX
+LOCKED-PHONE AUTO-VIBRATION FIX
+CURRENT SESSION NOTIFICATION
+FINAL BUILD
+
+Only use COMPLETE/SUCCESS for items actually saved and reasonably verified.
+
+==================================================
+W. FINAL DELIVERABLES
+==================================================
+
+When everything is complete, provide:
+
+1. Updated StudyNest debug APK.
+2. Updated StudyNest source ZIP.
+3. STUDYNEST_PROGRESS.md inside the source project.
+
+Give me a short final summary containing:
+
+- App icon changes.
+- Settings UI changes.
+- Auto-timer background bug fix.
+- Locked-phone/background vibration bug fix.
+- Current-session notification/timing update.
+- Files/components substantially modified.
+- Build status.
+- Testing performed.
+- Any remaining Android/device-specific limitations, especially background,
+  battery-optimization, permission, or OEM restrictions.
+
+==================================================
+MOST IMPORTANT INSTRUCTION
+==================================================
+
+SAVE PROGRESS CONTINUOUSLY.
+
+Do not wait for all five major areas to finish before saving.
+
+Recommended checkpoint order:
+
+CHECKPOINT 1
+Inspect existing project and STUDYNEST_PROGRESS.md; identify the latest stable
+state.
+
+CHECKPOINT 2
+Adaptive icon implementation completed + build verified.
+
+CHECKPOINT 3
+Settings structure/status card completed + build verified.
+
+CHECKPOINT 4
+Settings sub-pages/rows/polish completed + build verified.
+
+CHECKPOINT 5
+Background auto-timer Wi-Fi disconnect/OFF fix completed + build verified.
+
+CHECKPOINT 6
+Locked-phone/background automatic vibration fix completed + build verified.
+
+CHECKPOINT 7
+Current-session notification + timing completed + build verified.
+
+CHECKPOINT 8
+Final regression checks + APK/source ZIP.
+
+If the ChatGPT Work limit expires at ANY checkpoint, preserve everything already
+completed so the next Work session can inspect STUDYNEST_PROGRESS.md and continue
+from the exact latest stable point.

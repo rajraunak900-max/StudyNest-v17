@@ -1,0 +1,5 @@
+Command: clean assembleDebug testDebugUnitTest lintDebug
+Process exit: 0
+Gradle daemon result (stdout capture was incomplete):
+BUILD SUCCESSFUL in 1m 42s
+59 actionable tasks: 58 executed, 1 up-to-date

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.studynest.app.LocalNavigationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-09-30T07:54:36" hostname="204a74682f10" time="2.756">
+  <properties/>
+  <testcase name="bottomNavigationAndTaskCreation" classname="com.studynest.app.LocalNavigationTest" time="2.756"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

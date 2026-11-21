@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.studynest.app.SoundAutomationTest" tests="19" skipped="0" failures="0" errors="0" timestamp="2026-09-30T17:17:29" hostname="3f21b3d56cb7" time="1.188">
+  <properties/>
+  <testcase name="geoOnlyRestoresAfterFiveMinutes" classname="com.studynest.app.SoundAutomationTest" time="0.06"/>
+  <testcase name="turningGeofenceOffDoesNotStopTimerOrWifi" classname="com.studynest.app.SoundAutomationTest" time="0.041"/>
+  <testcase name="briefWifiHandoffPreservesFiveMinuteDeadline" classname="com.studynest.app.SoundAutomationTest" time="0.098"/>
+  <testcase name="departureAlwaysNormalFromAllPriorModes" classname="com.studynest.app.SoundAutomationTest" time="0.082"/>
+  <testcase name="manualVibrationCancelsFiveMinuteRestore" classname="com.studynest.app.SoundAutomationTest" time="0.051"/>
+  <testcase name="wifiWinsOverStaleGeofenceAndRunningManualTimer" classname="com.studynest.app.SoundAutomationTest" time="0.061"/>
+  <testcase name="leaveCancelsFiveMinuteRestoreDespiteStaleGeofence" classname="com.studynest.app.SoundAutomationTest" time="0.073"/>
+  <testcase name="briefDropAndSwitchingSavedNetworksRetainVibration" classname="com.studynest.app.SoundAutomationTest" time="0.082"/>
+  <testcase name="manualVibrationResetsOneTimeEvent" classname="com.studynest.app.SoundAutomationTest" time="0.04"/>
+  <testcase name="failedNormalRequestRetriesAfterPermissionReturns" classname="com.studynest.app.SoundAutomationTest" time="0.052"/>
+  <testcase name="silentThenSoundStartsARealOverrideDeadline" classname="com.studynest.app.SoundAutomationTest" time="0.059"/>
+  <testcase name="geoOnlyReminderIsOnceAndDepartureCancels" classname="com.studynest.app.SoundAutomationTest" time="0.042"/>
+  <testcase name="disabledGeofenceEventsDoNothing" classname="com.studynest.app.SoundAutomationTest" time="0.064"/>
+  <testcase name="geofenceOnlyModeWorksWhenWifiIsDisabled" classname="com.studynest.app.SoundAutomationTest" time="0.077"/>
+  <testcase name="departureResetsReminderAndReentryRearms" classname="com.studynest.app.SoundAutomationTest" time="0.052"/>
+  <testcase name="notifyModeRemindsOnceAcrossRestartAndLongWait" classname="com.studynest.app.SoundAutomationTest" time="0.069"/>
+  <testcase name="appChangesNeverTriggerOverrideReminder" classname="com.studynest.app.SoundAutomationTest" time="0.076"/>
+  <testcase name="pendingDepartureSurvivesRestart" classname="com.studynest.app.SoundAutomationTest" time="0.055"/>
+  <testcase name="restoreModeWaitsFullFiveMinutes" classname="com.studynest.app.SoundAutomationTest" time="0.048"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

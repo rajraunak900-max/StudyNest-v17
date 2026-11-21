@@ -1,0 +1,6 @@
+Final command: clean assembleDebug testDebugUnitTest lintDebug
+Process exit: 0
+34 tests, zero failures/errors. Lint: zero errors.
+API 33; schema migration 1 to 2 verified through Room open.
+APK signature verified; original signing certificate retained.
+The captured Gradle stdout log is incomplete; XML reports are the test evidence.

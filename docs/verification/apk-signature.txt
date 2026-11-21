@@ -1,0 +1,4 @@
+Signer #1 certificate DN: CN=Android Debug, O=StudyNest, C=IN
+Signer #1 certificate SHA-256 digest: 1a1fd08ef47edfbc56c21d5d0a60205092885ba4705d662b8967a91b34c75d17
+Signer #1 certificate SHA-1 digest: 4048b114d6336a9fb322d53afe8b055fef062a57
+Signer #1 certificate MD5 digest: 2e40f03c2eeb6f89ca8db0577e351239

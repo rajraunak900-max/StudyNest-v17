@@ -1,0 +1,17 @@
+M	README.md
+M	STUDYNEST_PROGRESS.md
+M	app/build.gradle.kts
+M	app/src/main/java/com/studynest/app/ui/AppMonitoring.kt
+M	app/src/main/java/com/studynest/app/ui/StudyNest.kt
+M	app/src/main/java/com/studynest/app/ui/TimerCard.kt
+A	app/src/test/java/com/studynest/app/Post169HelpUiTest.kt
+A	app/src/test/java/com/studynest/app/Post169HomeUiTest.kt
+A	docs/HOME_TIMER_SCOPE_1.6.10.md
+A	docs/PHYSICAL_ACCEPTANCE_1.6.10.md
+A	docs/PROGRESS_1.6.10.md
+A	docs/RELEASE_NOTES_1.6.10.md
+A	docs/REQUIREMENTS_1.6.10.md
+A	docs/STABLE_1.6.9_HANDOFF.md
+A	docs/IMPLEMENTATION_1.6.10.md
+A	docs/VERIFICATION_1.6.10.json
+A	docs/CHANGED_FILES_1.6.10.txt

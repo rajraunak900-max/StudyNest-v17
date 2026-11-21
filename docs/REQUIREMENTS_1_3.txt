@@ -1,0 +1,406 @@
+STUDYNEST – NEXT UPDATE / BUG-FIX PROMPT
+
+Continue working on the EXISTING StudyNest Android project. Do NOT rebuild the
+application from scratch and do NOT remove or redesign already-working features
+unless required for the changes below.
+
+==================================================
+A. CRITICAL: CONTINUOUS SAVE / CHECKPOINT SYSTEM
+==================================================
+
+This requirement is extremely important.
+
+My ChatGPT Work session/usage limit may expire or reset while you are working.
+Therefore, DO NOT wait until all of the following changes are finished before
+saving progress.
+
+After EVERY meaningful stable step:
+
+1. Save all modified source files immediately.
+2. Keep completed changes actually written to the project.
+3. Keep the project compilable/recoverable whenever reasonably possible.
+4. Update the existing STUDYNEST_PROGRESS.md checkpoint file.
+5. Record:
+   - What was completed.
+   - Bugs fixed.
+   - Files/components modified.
+   - Database/schema changes or migrations.
+   - What is currently being worked on.
+   - What remains unfinished.
+   - Any known issue that needs further testing.
+6. If a build succeeds, record this in the checkpoint.
+7. If a feature is only partially completed, clearly mark it as PARTIAL rather
+   than marking it complete.
+8. Never overwrite or discard previously completed working features simply
+   because the Work session is close to its limit.
+
+If the session ends unexpectedly, another Work session must be able to inspect
+STUDYNEST_PROGRESS.md and continue from the latest stable checkpoint.
+
+==================================================
+B. HISTORY – GROUP ACTIVITY INTO REAL STUDY SESSIONS
+==================================================
+
+The current History screen is showing individual tracking fragments such as:
+
+Wi-Fi      2h 36m
+Manual     0h 3m
+Manual     0h 0m
+Wi-Fi      0h 15m
+
+This makes the History screen confusing.
+
+I want StudyNest to introduce the concept of a REAL STUDY SESSION.
+
+Example:
+
+Suppose I arrive at the library and study for approximately 3 hours.
+
+During those 3 hours there may be:
+- Wi-Fi disconnections/reconnections,
+- manual tracking,
+- short breaks,
+- automatic tracking events,
+- temporary interruptions.
+
+These internal tracking records should NOT automatically appear as four or five
+separate main sessions.
+
+Instead, History should show something like:
+
+SESSION 1
+29 September
+Total Study Time: 3h 00m
+Start: 5:46 PM
+End: 9:21 PM
+
+The session may internally contain:
+
+• Wi-Fi tracked period
+• Manual tracked period
+• Breaks
+• reconnections
+
+but the user should primarily see ONE study session.
+
+If I leave and later return for another genuinely separate period of studying,
+show:
+
+SESSION 2
+29 September
+Total Study Time: 2h 10m
+
+Therefore a single date may contain:
+
+29 September
+Total: 5h 10m
+
+Session 1 — 3h 00m
+Session 2 — 2h 10m
+
+IMPORTANT:
+Do not simply combine every record from the same day.
+
+There must still be separate sessions when the user genuinely finishes one
+study period and later begins another.
+
+Design sensible session-grouping logic based on the app's existing tracking
+architecture.
+
+Short Wi-Fi interruptions/reconnections should not unnecessarily create new
+sessions.
+
+Break time must continue to be excluded from actual study duration.
+
+Zero-duration records such as:
+
+Manual
+0h 0m
+6:05 PM – 6:05 PM
+
+should NOT clutter the normal History interface.
+
+Either prevent meaningless zero-duration sessions from being stored or filter
+them from the user-visible history, whichever is safer for the existing
+architecture.
+
+==================================================
+C. SESSION DETAILS
+==================================================
+
+Each study session should be tappable.
+
+When the user taps Session 1, open a Session Details view.
+
+Show useful information such as:
+
+Session 1
+Date
+Start time
+End time
+Total study time
+Total break time (if available)
+
+Tracking activity:
+- Wi-Fi
+- Manual
+- other supported tracking methods
+
+This detailed screen can show the individual tracking fragments if useful.
+
+The main History screen, however, should remain clean and focus on complete
+study sessions rather than database-level tracking events.
+
+Keep the existing calendar/date-history functionality working.
+
+==================================================
+D. CHANGE THE STUDYNEST APP ICON
+==================================================
+
+Replace the current StudyNest launcher/app icon with the NEW ICON IMAGE I have
+attached to this request.
+
+Use the attached image showing:
+
+- an open book,
+- a clock,
+- dark background,
+- red/orange glow on the left,
+- blue glow on the right.
+
+This is the new official StudyNest icon.
+
+Properly integrate it into the Android project rather than merely displaying
+the image somewhere inside the app.
+
+Generate/use the appropriate Android launcher icon resources, including
+adaptive launcher icon resources where appropriate.
+
+Check how the icon appears:
+- on the Android launcher,
+- in recent apps where applicable,
+- in app information/system UI where applicable.
+
+Do not accidentally use the History screenshot as the icon. Use the attached
+book + clock image.
+
+==================================================
+E. FIX MANUAL SOUND OVERRIDE
+==================================================
+
+The existing "Manual Sound Override" functionality currently DOES NOT WORK AT
+ALL.
+
+Do not merely redesign its UI.
+
+Investigate the underlying implementation and make the feature actually work.
+
+Preserve the previously agreed behaviour.
+
+Inside Settings there should be the two Manual Sound Override choices/features
+we previously specified.
+
+OPTION 1 – AUTO OVERRIDE
+
+If StudyNest has automatically put the phone into vibration mode because the
+user is inside the configured library environment, and the user manually
+changes the phone back to sound/ringer mode:
+
+StudyNest should allow the manual change temporarily.
+
+After approximately 5 minutes, while the user is still inside the library,
+StudyNest should automatically change the phone back to vibration mode.
+
+This is intended to prevent the user from accidentally leaving the phone in
+sound mode inside the library.
+
+OPTION 2 – REMINDER ONLY
+
+If this mode is selected and the user manually changes the phone from vibration
+to sound while still inside the library:
+
+DO NOT automatically change it back.
+
+Instead, send ONE reminder notification telling the user that the phone is
+still in sound mode.
+
+IMPORTANT:
+This means ONE reminder for that manual override event.
+
+It must NOT repeatedly notify every five minutes.
+
+Do not create notification spam.
+
+Also preserve the previously intended behaviour that when the user genuinely
+leaves the configured library environment, StudyNest restores the appropriate
+normal sound/ringer state according to the app's existing sound-management
+logic.
+
+Investigate permissions/API limitations properly.
+
+If Android requires Notification Policy Access or another system permission for
+the functionality, make sure:
+- the app detects whether permission is granted,
+- clearly guides the user to grant it,
+- handles denial safely,
+- does not silently pretend the feature is working.
+
+Test both override modes independently.
+
+==================================================
+F. WI-FI SELECTION – SHOW AVAILABLE NETWORKS
+==================================================
+
+Currently I have to manually type the Wi-Fi network/SSID that StudyNest should
+use for library detection.
+
+I do NOT want to manually type the Wi-Fi name.
+
+Change this interface.
+
+When configuring Library Wi-Fi, provide a control such as:
+
+"Choose Wi-Fi Network"
+
+When tapped, show the Wi-Fi networks available/detectable to the phone so I can
+select the correct library Wi-Fi network.
+
+For example:
+
+Choose Library Wi-Fi
+
+○ Library_WiFi
+○ Airtel_5G
+○ JioFiber
+○ Campus_WiFi
+○ Other detected network
+
+The user should be able to tap/select the desired network.
+
+After selection, show the selected SSID clearly in Settings.
+
+Do not require the user to remember and manually type the SSID under normal
+circumstances.
+
+IMPORTANT ANDROID REQUIREMENTS:
+
+Implement this using the appropriate Android APIs for the project's target SDK.
+
+Handle Android Wi-Fi scanning restrictions and required permissions correctly.
+
+Depending on the Android version, Wi-Fi scanning/network discovery may require
+permissions such as Nearby Wi-Fi Devices and/or Location.
+
+Request only permissions actually required for the Android versions supported
+by StudyNest.
+
+If Wi-Fi scanning is unavailable because:
+- Wi-Fi is disabled,
+- required permission is denied,
+- Android temporarily restricts scanning,
+
+show a useful explanation instead of crashing or presenting an empty broken
+screen.
+
+Provide a Refresh/Scan Again action where appropriate.
+
+Do NOT automatically connect the phone to a network.
+
+This feature is only for selecting which Wi-Fi SSID StudyNest should monitor
+for its library automation.
+
+==================================================
+G. DO NOT BREAK EXISTING FEATURES
+==================================================
+
+These changes are an UPDATE to the existing StudyNest project.
+
+Preserve all existing working functionality, including:
+
+- Wi-Fi based library detection
+- GPS/location based detection where already implemented
+- vibration/sound automation
+- study tracking
+- streak tracking
+- manual study tracking
+- break handling
+- To-Do/Tasks
+- motivational quotes
+- History/calendar
+- Settings
+- notification behaviour
+- existing theme/UI
+- existing stored user data wherever reasonably possible
+
+Do not unnecessarily redesign unrelated screens.
+
+==================================================
+H. DATA MIGRATION / EXISTING HISTORY
+==================================================
+
+Because the History/session architecture may need to change, protect existing
+study records.
+
+If a Room/database schema change is required:
+
+- implement a proper migration,
+- do NOT use destructive migration merely because it is easier,
+- preserve existing history whenever reasonably possible.
+
+Existing tracking records should be converted/grouped into the new session
+presentation where feasible.
+
+Document any database changes in STUDYNEST_PROGRESS.md.
+
+==================================================
+I. TESTING REQUIREMENTS
+==================================================
+
+After implementation, specifically test:
+
+1. A normal 3-hour study session appears as ONE session.
+2. Temporary Wi-Fi disconnect/reconnect does not unnecessarily split it.
+3. A genuinely separate later study period creates Session 2.
+4. Breaks are excluded from study time.
+5. Zero-minute records do not clutter History.
+6. Session Details correctly displays underlying tracking information.
+7. New StudyNest icon is correctly installed.
+8. Manual Sound Override – Auto Override mode actually returns the phone to
+   vibration after approximately 5 minutes.
+9. Manual Sound Override – Reminder Only sends ONE reminder, not recurring
+   reminders.
+10. Leaving the library restores the appropriate sound state.
+11. Wi-Fi selection displays available networks.
+12. Selecting a Wi-Fi saves the correct SSID.
+13. Wi-Fi permissions are handled correctly.
+14. Wi-Fi scanning failure does not crash the application.
+15. Existing StudyNest functionality still works.
+
+Run the appropriate build/tests after major stable changes instead of waiting
+until the very end.
+
+Fix compilation errors caused by these modifications.
+
+==================================================
+J. FINAL DELIVERABLES
+==================================================
+
+When all work is complete:
+
+1. Produce a final working debug APK.
+2. Produce an updated StudyNest source ZIP.
+3. Keep STUDYNEST_PROGRESS.md in the project.
+4. Update the checkpoint to clearly state that this update is complete.
+5. Summarize:
+   - features implemented,
+   - bugs fixed,
+   - database changes,
+   - tests/build verification,
+   - any Android OS limitations that still exist.
+
+MOST IMPORTANT:
+SAVE AND CHECKPOINT CONTINUOUSLY.
+
+If the Work limit expires halfway through this update, I would rather have
+60% of the update safely saved and documented than lose completed work because
+everything was left until the final step.
