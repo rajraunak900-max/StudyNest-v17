@@ -7,7 +7,7 @@ StudyNest is an Android app for tracking study sessions, library visits, tasks, 
 - Track study sessions manually or automatically when you arrive at or leave your library.
 - Turn automatic vibration on or off. When enabled, StudyNest switches to Vibrate at the configured library and returns to Normal Sound after departure; Do Not Disturb access is required, and media volume is unchanged.
 - Automatically track time in apps you select. Their use during a study session counts as distraction and pauses Actual Study; Android Usage Access is required.
-- Organize study tasks, daily goals, breaks, and progress streaks.
+- Manage a to-do list with color-coded priorities: High (red), Medium (yellow), and Normal (green), alongside daily goals, breaks, and progress streaks.
 - Review daily, weekly, and monthly history with Actual Study, Sitting Time, distraction, and efficiency summaries.
 - Study records are stored on your device. Library detection relies on Android's location and Wi-Fi services; the app has no account or backend.
 
